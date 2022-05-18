@@ -1,21 +1,35 @@
-#include <stdio.h>
 #include <math.h>
-int main()
+#include <stdio.h>
+
+int
+main()
 {
-double f, h, x;
-unsigned int n, c = 0;
-printf("h = ");
-scanf("%lf", &h);
-n = 2 / h;
-while (c <= n)
-{
-if (0.0 < x && x <= 1.)
-f = exp(sin(2*x));
-else
-f = (x*x - 2*x*x*x) * cos(x*x);
-printf("x = %lf\t f(x) = %lf\n", x, f);
-x = x + h;
-c++;
-}
-return 0;
+
+    double h, f;
+    int i = 0;
+
+    printf("Enter h: ");
+    scanf("%lf", &h);
+
+    int count = (int)(3 / h);
+
+    printf("x           f(x)\n--------------------\n");
+
+    while(i <= count)
+    {
+        double x = -1.5 + i * h;
+        if(x >= -1.5 && x <= 0)
+        {
+            f = (pow(x, 2) - 2 * pow(x, 3)) * cos(pow(x, 2));
+        }
+        else if(x <= 1.5)
+        {
+            f = exp(sin(2 * x));
+        }
+        printf("%f    %f\n", x, f);
+
+        i++;
+    }
+
+    return 0;
 }
